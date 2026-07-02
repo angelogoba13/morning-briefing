@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morning Briefing — Angelo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #121210;
+    --card: #1c1c19;
+    --card-border: #2c2c28;
+    --gold: #d9a95e;
+    --gold-soft: #e8c88f;
+    --teal: #4fa88a;
+    --text-primary: #f2f1ec;
+    --text-secondary: #a8a69c;
+    --text-muted: #706e64;
+    --divider: #2a2a26;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: 'Inter', -apple-system, sans-serif;
+    line-height: 1.6;
+  }
+  .wrap {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+  .masthead {
+    text-align: center;
+    margin-bottom: 36px;
+  }
+  .masthead .label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0 0 8px;
+  }
+  .masthead h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 30px;
+    margin: 0 0 6px;
+    color: var(--text-primary);
+  }
+  .masthead .date {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+  .priority {
+    background: linear-gradient(180deg, #221d13, #1c1c19);
+    border: 1px solid #3a3021;
+    border-left: 3px solid var(--gold);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-bottom: 32px;
+  }
+  .priority .tag {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold-soft);
+    margin: 0 0 6px;
+  }
+  .priority p.item {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0;
+    color: var(--text-primary);
+  }
+  .section {
+    margin-bottom: 32px;
+  }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--divider);
+  }
+  .section-head .icon {
+    font-size: 16px;
+  }
+  .section-head h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+    color: var(--text-primary);
+  }
+  .subgroup {
+    margin-bottom: 18px;
+  }
+  .subgroup:last-child { margin-bottom: 0; }
+  .subgroup h3 {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--teal);
+    text-transform: uppercase;
+    margin: 0 0 10px;
+  }
+  .item {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--divider);
+  }
+  .item:last-child { border-bottom: none; }
+  .item .headline {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin: 0 0 5px;
+  }
+  .item .context {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.7;
+  }
+  .task-row {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--divider);
+    font-size: 13px;
+  }
+  .task-row:last-child { border-bottom: none; }
+  .task-row .time {
+    color: var(--gold);
+    font-weight: 500;
+    min-width: 48px;
+  }
+  .task-row .desc {
+    color: var(--text-primary);
+  }
+  .task-row .src {
+    margin-left: auto;
+    color: var(--text-muted);
+    font-size: 11px;
+  }
+  .critical-badge {
+    display: inline-block;
+    background: #3a1e1e;
+    color: #e08a8a;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin-left: 8px;
+  }
+  .week-day {
+    font-size: 13px;
+    color: var(--text-secondary);
+    padding: 5px 0;
+  }
+  .week-day .day-label {
+    color: var(--text-muted);
+    display: inline-block;
+    min-width: 60px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 18px 20px;
+  }
+  .idea-tag {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 8px;
+  }
+  .idea-text {
+    font-size: 14px;
+    color: var(--text-primary);
+    margin: 0;
+  }
+  footer {
+    text-align: center;
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--divider);
+  }
+  footer p {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin: 0;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="masthead">
+    <p class="label">Morning briefing</p>
+    <h1>Angelo</h1>
+    <p class="date">Miércoles, 1 de julio de 2026</p>
+  </div>
+
+  <div class="priority">
+    <p class="tag">Prioridad de hoy</p>
+    <p class="item">Responder a Isaac (Prodensa) sobre el dashboard de USMCA antes de las 10am</p>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <span class="icon">📰</span>
+      <h2>Noticias</h2>
+    </div>
+    <div class="card">
+      <div class="subgroup">
+        <h3>Mundo & finanzas</h3>
+        <div class="item">
+          <p class="headline">Fed mantiene tasas sin cambios por tercera reunión consecutiva</p>
+          <p class="context">Powell señaló ayer que la inflación subyacente todavía no converge de forma consistente al objetivo del 2%, aunque reconoció que el mercado laboral se ha enfriado más de lo esperado. Los futuros de tasas ahora descuentan solo un recorte para lo que resta del año, frente a los dos que se esperaban hace un mes — algo a vigilar si trabajas con proyecciones de costo de capital.</p>
+        </div>
+        <div class="item">
+          <p class="headline">Nvidia supera expectativas en su reporte trimestral</p>
+          <p class="context">Ingresos por centro de datos crecieron 94% interanual, muy por encima del consenso de analistas. La demanda de chips de IA sigue sin señales de desaceleración, y la compañía guio hacia un Q3 aún más fuerte — otro dato que refuerza que el ciclo de inversión en infraestructura de IA está lejos de agotarse.</p>
+        </div>
+      </div>
+      <div class="subgroup">
+        <h3>México & nearshoring</h3>
+        <div class="item">
+          <p class="headline">Nueva planta de manufactura automotriz confirma inversión en Nuevo León</p>
+          <p class="context">La inversión de $350M USD generará 1,200 empleos directos y se suma a al menos otros tres anuncios similares en la región en lo que va del año. El estado se consolida como el destino preferido para proveedores tier-1 del sector automotriz que buscan cercanía con plantas ya establecidas.</p>
+        </div>
+      </div>
+      <div class="subgroup">
+        <h3>Tu industria — IB / M&A</h3>
+        <div class="item">
+          <p class="headline">Boutique de M&A abre oficina en CDMX</p>
+          <p class="context">Es la tercera firma internacional en expandir presencia en México este año, señal de que el apetito por dealmaking en la región sigue creciendo pese a la incertidumbre política. Contrataron a un ex-director de un banco local para liderar la oficina — vale la pena tener el nombre en el radar.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <span class="icon">🎯</span>
+      <h2>Pendientes</h2>
+    </div>
+    <div class="card">
+      <div class="subgroup">
+        <h3>Hoy</h3>
+        <div class="task-row">
+          <span class="time">9:00</span>
+          <span class="desc">Sync semanal de equipo <span class="critical-badge">crítico</span></span>
+          <span class="src">Calendar</span>
+        </div>
+        <div class="task-row">
+          <span class="time">10:00</span>
+          <span class="desc">Responder correo de Isaac sobre dashboard</span>
+          <span class="src">Outlook</span>
+        </div>
+        <div class="task-row">
+          <span class="time">17:00</span>
+          <span class="desc">Entregar avance de tarea de riesgo</span>
+          <span class="src">Todoist</span>
+        </div>
+      </div>
+      <div class="subgroup">
+        <h3>Próximos 7 días</h3>
+        <div class="week-day"><span class="day-label">Jueves</span> Entrega parcial de macroeconometría</div>
+        <div class="week-day"><span class="day-label">Sábado</span> Reunión con Prof. Brea-Solís (tesis)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <span class="icon">🧠</span>
+      <h2>Aprendizaje diario</h2>
+    </div>
+    <div class="card">
+      <p class="idea-tag">Técnica IB</p>
+      <p class="idea-text"><strong>Pregunta:</strong> ¿Por qué usarías EV/EBITDA en vez de P/E para comparar empresas con distinta estructura de capital?</p>
+      <p class="idea-text" style="margin-top:10px; color: var(--text-secondary);"><strong>Respuesta:</strong> EV/EBITDA es capital-structure neutral — incluye deuda en el numerador (EV) y excluye gastos financieros del denominador (EBITDA), permitiendo comparar empresas con distintos niveles de apalancamiento sin distorsión.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <span class="icon">💡</span>
+      <h2>Idea con Claude</h2>
+    </div>
+    <div class="card">
+      <p class="idea-tag">Trabajo / Prodensa</p>
+      <p class="idea-text">Podrías automatizar la clasificación de leads entrantes de HubSpot por industria y tamaño de inversión usando un pipeline en Python + Claude API, reduciendo el triage manual que haces cada semana.</p>
+    </div>
+  </div>
+
+  <footer>
+    <p>Generado automáticamente · claude.ai/code/routines</p>
+  </footer>
+
+</div>
+</body>
+</html>
